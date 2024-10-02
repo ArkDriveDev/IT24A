@@ -1,4 +1,5 @@
 class LeafletMap {
+    /*I understand these as initializing the open streetmap*/
     constructor(containerId, center, zoom) {
         this.map = L.map(containerId).setView(center, zoom);
         this.initTileLayer();
@@ -11,5 +12,25 @@ class LeafletMap {
         }).addTo(this.map);
     }
 
+    addMarker(lat, lng, message) {
+        const marker = L.marker([lat, lng]).addTo(this.map);
+        marker.bindPopup(message);
+    }
+
+    loadMarkersFromJson(url) {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(marker => {
+                    /*Array_list instantation for addmarker function parameters*/ 
+                    this.addMarker(marker.latitude, marker.longitude, marker.message);
+                });
+            })
+            .catch(error => console.error('Error loading markers:', error));
+    }
 }
+/*Instantion for map zoomed coordinates references the containerID,center,zoom*/
 const myMap = new LeafletMap('map', [8.360004, 124.868419], 18);
+
+/*json for loadmarker array_list */
+myMap.loadMarkersFromJson('Pins.json');
