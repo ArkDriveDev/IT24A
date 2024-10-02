@@ -2,11 +2,26 @@
     {
         "latitude": 8.359639,
         "longitude": 124.869179,
-        "message": "Class CCS Laboratory 1"
+        "classroom": "Class CCS Laboratory 1"
     },
     {
         "latitude": 8.359554,
         "longitude": 124.869153,
-        "message": "Class CCS Laboratory 2"
+        "classroom": "Class CCS Laboratory 2"
+    },
+    {
+        "latitude":8.359179, 
+        "longitude":124.868468,
+        "classroom":"BA 302"
+    },
+    {
+        "latitude":8.360094, 
+        "longitude":124.867432,
+        "classroom":"SC 202"
+    },
+    {
+        "latitude":8.360113, 
+        "longitude":124.868889,
+        "classroom":"Covered Court"
     }
 ]

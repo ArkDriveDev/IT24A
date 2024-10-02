@@ -12,9 +12,9 @@ class LeafletMap {
         }).addTo(this.map);
     }
 
-    addMarker(lat, lng, message) {
+    addMarker(lat, lng, classroom) {
         const marker = L.marker([lat, lng]).addTo(this.map);
-        marker.bindPopup(message);
+        marker.bindPopup(classroom);
     }
 
     loadMarkersFromJson(url) {
@@ -23,7 +23,7 @@ class LeafletMap {
             .then(data => {
                 data.forEach(marker => {
                     /*Array_list instantation for addmarker function parameters*/ 
-                    this.addMarker(marker.latitude, marker.longitude, marker.message);
+                    this.addMarker(marker.latitude, marker.longitude, marker.classroom);
                 });
             })
             .catch(error => console.error('Error loading markers:', error));
