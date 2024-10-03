@@ -22,6 +22,11 @@ let myArray = [];
             myArray.forEach(item => {
                 const li = document.createElement("li");
                 li.textContent = item; // Set the text content to the array item
+
+                li.addEventListener("click", () => {
+                    alert(`You Attended on class ${item}`); // Action when item is clicked
+                });
+
                 ul.appendChild(li); // Append the list item to the list
             });
             
