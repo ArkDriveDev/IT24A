@@ -29,4 +29,4 @@ let myArray = [];
         }
 
         // Add event listener to the button
-        document.getElementById("loadClassesButton").addEventListener("click", loadClasses);
+        window.onload = loadClasses;
