@@ -1,4 +1,5 @@
 let myArray = [];
+let classArray = [];
 
         // Function to load the array from JSON
         async function loadClasses() {
@@ -25,6 +26,7 @@ let myArray = [];
 
                 li.addEventListener("click", () => {
                     alert(`You Attended on class ${item}`); // Action when item is clicked
+                    classArray.push(`${item}`);
                 });
 
                 ul.appendChild(li); // Append the list item to the list
@@ -32,6 +34,20 @@ let myArray = [];
             
             displayDiv.appendChild(ul); // Append the list to the display div
         }
+         
+        // Add event listener to the button and on load
+         window.onload = loadClasses;
+         const button = document.getElementById("displayatt");
+         const Logs = document.getElementById("classDisplay");
 
-        // Add event listener to the button
-        window.onload = loadClasses;
+        button.addEventListener("click", () => {
+            Logs.innerHTML="";
+
+            classArray.forEach(classitem => {
+                const list = document.createElement("li");
+                list.textContent=classitem;
+                Logs.appendChild(list);
+            });
+        });
+
+       
