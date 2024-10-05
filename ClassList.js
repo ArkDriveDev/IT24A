@@ -1,5 +1,5 @@
 let myArray = [];
-let classArray = [];
+        let classArray = [];
 
         // Function to load the array from JSON
         async function loadClasses() {
@@ -25,8 +25,21 @@ let classArray = [];
                 li.textContent = item; // Set the text content to the array item
 
                 li.addEventListener("click", () => {
-                    alert(`You Attended on class ${item}`); // Action when item is clicked
-                    classArray.push(`${item}`);
+                    alert(`You Attended class ${item}`); // Action when item is clicked
+                    
+                    // Get the current date and time
+                    const now = new Date();
+                    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                    const dayOfWeek = now.getDay();
+                    const date = now.getDate();
+                    const month = now.getMonth() + 1; // Adding 1 to make it 1-12
+                    const year = now.getFullYear();
+                    const hours = now.getHours();
+                    const minutes = now.getMinutes();
+                    const dayName = days[dayOfWeek];
+                    
+                    // Push attendance info to classArray
+                    classArray.push(`${item} - ${dayName}, ${month}/${date}/${year} ${hours}:${minutes}`);
                 });
 
                 ul.appendChild(li); // Append the list item to the list
@@ -36,18 +49,16 @@ let classArray = [];
         }
          
         // Add event listener to the button and on load
-         window.onload = loadClasses;
-         const button = document.getElementById("displayatt");
-         const Logs = document.getElementById("classDisplay");
+        window.onload = loadClasses;
+        const button = document.getElementById("displayatt");
+        const Logs = document.getElementById("classDisplay");
 
         button.addEventListener("click", () => {
-            Logs.innerHTML="";
+            Logs.innerHTML = ""; // Clear previous logs
 
             classArray.forEach(classitem => {
                 const list = document.createElement("li");
-                list.textContent=classitem;
-                Logs.appendChild(list);
+                list.textContent = classitem; // Set text to the class attendance item
+                Logs.appendChild(list); // Append the list item to the log
             });
         });
-
-       
