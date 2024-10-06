@@ -6,9 +6,14 @@ let Selected_Class;
 async function loadClasses() {
     try {
         const response = await fetch('Classes.json'); // Fetch the JSON file
-        myArray = await response.json(); // Parse the JSON into the array
-        displayArray(); // Call function to display the array
-
+        const data = await response.json();
+        
+        // Access the specific array you want
+        myArray = data.SC_202; // Ensure SC_202 is a valid key in your JSON
+        
+        // Display the array
+        displayArray(myArray); // Pass the myArray to displayArray
+        
         // Retrieve the clicked marker from localStorage
         const clickedMarker = localStorage.getItem('clickedMarker');
         if (clickedMarker) {
@@ -22,14 +27,14 @@ async function loadClasses() {
 }
 
 // Function to display the array
-function displayArray() {
+function displayArray(array) {
     const displayDiv = document.getElementById("arrayDisplay");
     displayDiv.innerHTML = ''; // Clear previous content
     
     // Create a list to display the array items
     const ul = document.createElement("ul");
     
-    myArray.forEach(item => {
+    array.forEach(item => { // Use the array passed to the function
         const li = document.createElement("li");
         li.textContent = item; // Set the text content to the array item
 
@@ -56,7 +61,7 @@ function displayArray() {
     
     displayDiv.appendChild(ul); // Append the list to the display div
 }
- 
+
 // Add event listener to the button and on load
 window.onload = loadClasses;
 
