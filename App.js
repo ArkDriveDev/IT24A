@@ -13,11 +13,14 @@ class LeafletMap {
     }
 
     addMarker(lat, lng, classroom) {
+        let Clicked_marker;
         const marker = L.marker([lat, lng]).addTo(this.map);
         
         marker.on('click', () => {
             //function on changing page for clicking marker
             window.location.href = 'Classroom.html';
+            Clicked_marker=`${classroom}`;
+            alert("Welcome to "+Clicked_marker);
         });
         
         marker.bindPopup(classroom);
