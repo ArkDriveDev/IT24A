@@ -14,6 +14,12 @@ class LeafletMap {
 
     addMarker(lat, lng, classroom) {
         const marker = L.marker([lat, lng]).addTo(this.map);
+        
+        marker.on('click', () => {
+            alert(`You clicked on ${classroom}!`);
+            // Additional actions can be added here
+        });
+        
         marker.bindPopup(classroom);
     }
 
