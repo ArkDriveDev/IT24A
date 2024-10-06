@@ -16,8 +16,8 @@ class LeafletMap {
         const marker = L.marker([lat, lng]).addTo(this.map);
         
         marker.on('click', () => {
-            alert(`You clicked on ${classroom}!`);
-            // Additional actions can be added here
+            //function on changing page for clicking marker
+            window.location.href = 'Classroom.html';
         });
         
         marker.bindPopup(classroom);
@@ -35,6 +35,7 @@ class LeafletMap {
             .catch(error => console.error('Error loading markers:', error));
     }
 }
+
 /*Instantion for map zoomed coordinates references the containerID,center,zoom*/
 const myMap = new LeafletMap('map', [8.360004, 124.868419], 18);
 
