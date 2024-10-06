@@ -8,19 +8,25 @@ async function loadClasses() {
         const response = await fetch('Classes.json'); // Fetch the JSON file
         const data = await response.json();
         
-        // Access the specific array you want
-        myArray = data.SC_202; // Ensure SC_202 is a valid key in your JSON
-        
-        // Display the array
-        displayArray(myArray); // Pass the myArray to displayArray
-        
         // Retrieve the clicked marker from localStorage
         const clickedMarker = localStorage.getItem('clickedMarker');
         if (clickedMarker) {
             Selected_Class = clickedMarker;
-            alert(Selected_Class + " Transferred");
-            // You can use Selected_Class for further logic here
+            //Using condition classes varies on selected classroom
+            if(Selected_Class=="Class CCS Laboratory 1" || Selected_Class=="Class CCS Laboratory 2"){
+                myArray=data.Lab_class;
+            }else if(Selected_Class=="BA 302"){
+                myArray=data.BA_302;
+            }else if(Selected_Class=="SC 202"){
+                myArray=data.SC_202;
+            }
+            else if(Selected_Class=="Covered Court"){
+                myArray=data.Court_classes;
+            }
+            
         }
+       // Display the array
+       displayArray(myArray); // Pass the myArray to displayArray
     } catch (error) {
         console.error('Error loading the JSON:', error);
     }
