@@ -15,7 +15,7 @@ class LeafletMap {
         const marker = L.marker([lat, lng]).addTo(this.map);
         
         marker.on('click', () => {
-            // Stori clicked marker in localStorage
+            // Store clicked marker in localStorage
             localStorage.setItem('clickedMarker', classroom);
             // Navigate to the classroom page
             window.location.href = 'Classroom.html';
