@@ -53,7 +53,7 @@ function displayArray(array) {
             const dayName = days[dayOfWeek];
             
             // Push attendance info to classArray
-            const attendanceRecord = `${item} - ${dayName}, ${month}/${date}/${year} ${hours}:${minutes}`;
+            const attendanceRecord = `${Selected_Class}, ${item} - ${dayName}, ${month}/${date}/${year} ${hours}:${minutes}`;
             classArray.push(attendanceRecord);
             AttendanceRecords.push(attendanceRecord);
             
