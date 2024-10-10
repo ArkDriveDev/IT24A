@@ -48,7 +48,7 @@ class Recordsfunctions {
 
 // Create an instance of Recordsfunctions and load records on window load
 window.onload = () => {
-    const recordsFunctions = new Recordsfunctions('arrayDisplay', 'ResultCount'); 
+    const recordsFunctions = new Recordsfunctions('CardDisplay', 'ResultCount'); 
     recordsFunctions.loadRecords(); // Call the loadRecords method
 
     document.getElementById('clearButton').onclick = () => {
