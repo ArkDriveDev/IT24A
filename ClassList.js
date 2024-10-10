@@ -1,5 +1,4 @@
 let myArray = [];
-let classArray = [];
 let Selected_Class;
 let AttendanceRecords = JSON.parse(localStorage.getItem('AttendanceRecords')) || []; // Load records from local storage
 
@@ -54,7 +53,6 @@ function displayArray(array) {
             
             // Push attendance info to classArray
             const attendanceRecord = `${Selected_Class}, ${item} - ${dayName}, ${month}/${date}/${year} ${hours}:${minutes}`;
-            classArray.push(attendanceRecord);
             AttendanceRecords.push(attendanceRecord);
             
             // Save to local storage
