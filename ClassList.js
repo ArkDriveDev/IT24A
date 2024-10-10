@@ -1,5 +1,4 @@
 let myArray = [];
-let classArray = [];
 let Selected_Class;
 let AttendanceRecords = JSON.parse(localStorage.getItem('AttendanceRecords')) || []; // Load records from local storage
 
@@ -52,11 +51,20 @@ function displayArray(array) {
             const minutes = now.getMinutes();
             const dayName = days[dayOfWeek];
             
-            // Push attendance info to classArray
-            const attendanceRecord = `${Selected_Class}, ${item} - ${dayName}, ${month}/${date}/${year} ${hours}:${minutes}`;
-            classArray.push(attendanceRecord);
-            AttendanceRecords.push(attendanceRecord);
-            
+            // create attendance info into cards
+            const attendanceRecord = `${dayName}, ${month}/${date}/${year} ${hours}:${minutes}`;
+
+             // Create the card
+        const card = `
+            <div class="card mb-2">
+                <div class="card-body">
+                    <h3 class="card-title">${Selected_Class}</h3>
+                    <p class="card-text">${item}</p>
+                    <p class="card-text">${attendanceRecord}</p>
+                </div>
+            </div>
+        `;
+            AttendanceRecords.push(card);
             // Save to local storage
             localStorage.setItem('AttendanceRecords', JSON.stringify(AttendanceRecords));
 
