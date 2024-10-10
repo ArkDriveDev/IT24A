@@ -15,8 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <a class="nav-link" href="Records.html" style="-webkit-text-fill-color: white; font-size: 1rem;">Attendance</a>
                         </li>
                         <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="font-size: 0.9rem; width: 170px; height: 35px;">
-                            <button class="btn btn-outline-success" type="submit" style="font-size: 0.9rem; width: 130px; height: 35px;">Search</button>
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="font-size: 0.9rem; width: 300px; height: 35px;">
                         </form>
                     </ul>
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
