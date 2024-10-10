@@ -19,10 +19,20 @@ class Recordsfunctions {
         const logCount = this.AttendanceRecords.length;
         this.result.innerHTML = `Result: ${logCount}`; // Update the text in the h2
     }
+    clearRecords() {
+        // Clear the local storage and update the records
+        localStorage.removeItem('AttendanceRecords');
+        this.AttendanceRecords = []; // Reset the array
+        this.loadRecords(); // Refresh the display
+    }
 }
 
 // Create an instance of Recordsfunctions and load records on window load
 window.onload = () => {
     const recordsFunctions = new Recordsfunctions('arrayDisplay', 'ResultCount'); 
     recordsFunctions.loadRecords(); // Call the loadRecords method
+
+    document.getElementById('clearButton').onclick = () => {
+        recordsFunctions.clearRecords(); // Call the clearRecords method
+    };
 };
