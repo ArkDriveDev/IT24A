@@ -1,6 +1,6 @@
 class Recordsfunctions {
     constructor(logs, results) {
-        this.Logs = document.getElementById(logs);
+        this.Logs = document.getElementById(logs);//these is the ResultCount
         this.result = document.getElementById(results);
         this.AttendanceRecords = JSON.parse(localStorage.getItem('AttendanceRecords')) || [];
         this.bindSearchEvent(); // Bind search event
@@ -26,18 +26,20 @@ class Recordsfunctions {
         this.AttendanceRecords = []; // Reset the array
         this.loadRecords(); // Refresh the display
     }
-
+    //bind from navbar.js with id searchbar
     bindSearchEvent() {
         const searchBar = document.getElementById('searchBar');
         searchBar.addEventListener('input', () => {
+            //on caret searchbar event calling the filterrecords
             this.filterRecords(searchBar.value);
         });
     }
-
+    //Caret inputed data in search bar then filter ResultCount
     filterRecords(query) {
         const filteredRecords = this.AttendanceRecords.filter(record => 
             record.toLowerCase().includes(query.toLowerCase())
         );
+        //calling the renderRecords function to render filtered data
         this.renderRecords(filteredRecords); // Render filtered records
         const logCount = filteredRecords.length;
         this.result.innerHTML = `Result: ${logCount}`; // Update the count
