@@ -1,6 +1,6 @@
 class Recordsfunctions {
     constructor(logs, results) {
-        this.Logs = document.getElementById(logs);//these is the ResultCount
+        this.Logs = document.getElementById(logs); // This is the display area for cards
         this.result = document.getElementById(results);
         this.AttendanceRecords = JSON.parse(localStorage.getItem('AttendanceRecords')) || [];
         this.bindSearchEvent(); // Bind search event
@@ -14,10 +14,11 @@ class Recordsfunctions {
 
     renderRecords(records) {
         this.Logs.innerHTML = ""; // Clear previous logs
-        records.forEach(classitem => {
-            const list = document.createElement("li");
-            list.textContent = classitem; // Set text to the attendance item
-            this.Logs.appendChild(list); // Append the list item
+
+        records.forEach(cardHTML => {
+            const cardElement = document.createElement("div");
+            cardElement.innerHTML = cardHTML; // Set innerHTML to the card HTML
+            this.Logs.appendChild(cardElement); // Append the card element
         });
     }
 
@@ -26,20 +27,22 @@ class Recordsfunctions {
         this.AttendanceRecords = []; // Reset the array
         this.loadRecords(); // Refresh the display
     }
-    //bind from navbar.js with id searchbar
+
+    // Bind search event from navbar.js with id searchbar
     bindSearchEvent() {
         const searchBar = document.getElementById('searchBar');
         searchBar.addEventListener('input', () => {
-            //on caret searchbar event calling the filterrecords
+            // On caret searchbar event, call the filterRecords
             this.filterRecords(searchBar.value);
         });
     }
-    //Caret inputed data in search bar then filter ResultCount
+
+    // Caret input data in search bar then filter ResultCount
     filterRecords(query) {
         const filteredRecords = this.AttendanceRecords.filter(record => 
             record.toLowerCase().includes(query.toLowerCase())
         );
-        //calling the renderRecords function to render filtered data
+        // Calling the renderRecords function to render filtered data
         this.renderRecords(filteredRecords); // Render filtered records
         const logCount = filteredRecords.length;
         this.result.innerHTML = `Result: ${logCount}`; // Update the count
