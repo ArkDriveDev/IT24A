@@ -1,7 +1,11 @@
 class LeafletMap {
-    constructor(containerId, center, zoom) {
+    constructor(containerId, center, zoom, locationId) {
         this.map = L.map(containerId).setView(center, zoom);
         this.initTileLayer();
+        this.initMoveEndListener();
+        
+        // Initialize Loc_ID using the provided locationId
+        this.Loc_ID = document.getElementById(locationId);
     }
 
     initTileLayer() {
@@ -34,10 +38,20 @@ class LeafletMap {
             })
             .catch(error => console.error('Error loading markers:', error));
     }
+
+    initMoveEndListener() {
+        this.map.on('moveend', () => {
+            const center = this.map.getCenter();
+            const lat = center.lat;
+            const lng = center.lng;
+            // Update the Loc_ID element with the coordinates
+            this.Loc_ID.innerHTML = "Latitude: " + lat.toFixed(6) + ", Longitude: " + lng.toFixed(6);
+        });
+    }
 }
 
-/* Instantiate for map zoomed coordinates referencing the containerId, center, zoom */
-const myMap = new LeafletMap('map', [8.360004, 124.868419], 18);
+/* Instantiate for map zoomed coordinates referencing the containerId, center, zoom, and locationId */
+const myMap = new LeafletMap('map', [8.360004, 124.868419], 18, 'location_id');
 
 /* JSON for loading markers */
 myMap.loadMarkersFromJson('Pins.json');
